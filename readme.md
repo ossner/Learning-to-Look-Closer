@@ -1,3 +1,35 @@
+# Learning to Look Closer: A New Instance-Wise Loss for Small Cerebral Lesion Segmentation
+
+This is the official implementation for our ISBI 2026 submission. 
+
+## Abstract 
+
+Traditional loss functions in medical image segmentation,
+such as Dice, often under-segment small lesions because their
+small relative volume contributes negligibly to the overall
+loss. To address this, instance-wise loss functions and metrics have been proposed to evaluate segmentation quality on
+a per-lesion basis. We introduce CC-DiceCE, a loss function
+based on the CC-Metrics framework, and compare it with the
+existing blob loss. Both are benchmarked against a DiceCE
+baseline within the nnU-Net framework, which provides a
+robust and standardized setup. We find that CC-DiceCE loss
+increases detection (recall) with minimal to no degradation in
+segmentation performance, albeit at the cost of slightly more
+false positives. Furthermore, our multi-dataset study shows
+that CC-DiceCE generally outperforms blob loss.
+
+## Implementation
+
+This implementation is based on nnU-Net and consists of three core files:
+
+- [`instance_losses.py`](nnunetv2/training/loss/instance_losses.py) implements CC-Metrics and the blob loss for binary images.
+- [`nnUNetTrainerInstanceLosses.py`](nnunetv2/training/nnUNetTrainer/variants/loss/nnUNetTrainerInstanceLosses.py) integrates these losses into nnU-Net trainers.
+- [`connected_components.py`](nnunetv2/utilities/connected_components.py) provides fast CuPy-based connected-component labeling and Voronoi computation.
+
+## Requirements 
+
+Install all dependencies listed in `pyproject.toml`, plus CuPy. See the [CuPy installation guide](https://docs.cupy.dev/en/stable/install.html#installing-cupy-from-pypi) to determine which version to install.
+
 # Welcome to the new nnU-Net!
 
 Click [here](https://github.com/MIC-DKFZ/nnUNet/tree/nnunetv1) if you were looking for the old one instead.
