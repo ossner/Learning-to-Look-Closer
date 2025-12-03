@@ -1,6 +1,6 @@
 # Learning to Look Closer: A New Instance-Wise Loss for Small Cerebral Lesion Segmentation
 
-This is the official implementation for our ISBI 2026 submission. 
+This is the official implementation of our ISBI 2026 submission. The preprint is available [here](https://arxiv.org/abs/2511.17146).
 
 ## Abstract 
 
